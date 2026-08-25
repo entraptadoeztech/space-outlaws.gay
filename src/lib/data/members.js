@@ -31,7 +31,7 @@ const members = [
 		buttons: [
 			{
 				src: '/buttons/ariajb.webp',
-				alt: "ariajb.net",
+				alt: 'ariajb.net',
 				href: 'https://ariajb.net'
 			}
 		],
