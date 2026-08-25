@@ -4,24 +4,33 @@ on:
   push:
     branches: 'main'
 
-env:
-  SSH_KEY: '${{ secrets.SSH_KEY }}'
-
 jobs:
   build_site:
     runs-on: docker
     steps:
-      - name: Deploy
+      - name: Checkout repository
+        uses: https://code.forgejo.org/actions/checkout@v4
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Set up SSH key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      - name: Add remote to known_hosts
+        run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Run rsync deploy
         run: |
-          TEMP_PATH="$(mktemp -d)"
-          SSH_KEY_PATH="$TEMP_PATH/ssh_key"
-          echo "$SSH_KEY" > "$SSH_KEY_PATH"
-          chmod 600 "$SSH_KEY_PATH"
-          cat > deploy.sh << EOF
-          cd /var/www/html/besties.house
-          git pull
-          corepack pnpm i --frozen-lockfile
-          corepack pnpm run build
-          EOF
-          ssh -o "StrictHostKeyChecking no" "${{ secrets.SSH_HOST }}" -p "${{ secrets.SSH_PORT || 22 }}" -l "${{ secrets.SSH_USER }}" -i "$SSH_KEY_PATH" 'bash -s' < deploy.sh
-          rm -rf $TEMP_PATH
+          rsync -avz --delete \
+            --exclude '.git/' \
+            --exclude '.env' \
+            ./build/ ${{ secrets.SSH_USER }}@${$ secrets.SSH_HOST }}:${{ secrets.REMOTE_PATH }}
