@@ -33,4 +33,4 @@ jobs:
           rsync -avz --delete \
             --exclude '.git/' \
             --exclude '.env' \
-            ./build/ ${{ secrets.SSH_USER }}@${$ secrets.SSH_HOST }}:${{ secrets.REMOTE_PATH }}
+            ./build/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.REMOTE_PATH }}
