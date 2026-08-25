@@ -54,8 +54,8 @@ const buttons = [
 		title: 'kattgutte er ikke ekte'
 	},
 	{
-		src: 'https://holly.mlem.systems/img/badges/holly.png',
-		href: 'https://holly.mlem.systems',
+		src: 'https://crenata.net/img/badges/holly.png',
+		href: 'https://crenata.net',
 		alt: 'holly'
 	},
 	{
