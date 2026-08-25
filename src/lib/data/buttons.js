@@ -48,6 +48,11 @@ const buttons = [
 		alt: 'ellie time'
 	},
 	{
+		src: 'https://mentholgrrl.neocities.org/imageassets/8831/dogteeth_button3.png',
+		href: 'https://dogteeth.vip',
+		alt: 'dogteeth'
+	},
+	{
 		src: '/buttons/kattgutte.png',
 		href: 'https://blueb.pages.gay',
 		alt: 'sad kitten looking at viewer with text saying kattgutte er ikke ekte',
