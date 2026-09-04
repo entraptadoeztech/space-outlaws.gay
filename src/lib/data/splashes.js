@@ -36,7 +36,8 @@ const splashes = [
 	'need myself some zloty',
 	'no lies....',
 	'im neuroswagger',
-	'why is it called "besties" when you best ie the house best of ors eat the house'
+	'why is it called "besties" when you best ie the house best of ors eat the house',
+	"we're 86 waffles'
 ]
 
 export default splashes
