@@ -28,7 +28,7 @@
 </script>
 
 <svelte:head>
-	<title>besties</title>
+	<title>Space Outlaws</title>
 
 	<meta name="title" content="besties" />
 	<meta
