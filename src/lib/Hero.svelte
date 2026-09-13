@@ -10,7 +10,7 @@
 
 <div class="hero">
 	<GlitchyBg />
-	<h1 class="besties-heading">besties</h1>
+	<h1 class="besties-heading">The Space Outlawz</h1>
 	<RandomMessage
 		on:update-message={handleRandomMessageUpdate}
 		class="besties-splash"
